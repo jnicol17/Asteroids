@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     //}
 
     // called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Controls player rotation towards the mouse
 

@@ -13,12 +13,12 @@ public class Bullet : MonoBehaviour {
     void Awake()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        
+        rb2d.velocity = transform.up * bulletSpeed;
     }
 	
 	// Update is called once per frame
 	void Update () {
         // constant bullet speed is attained by setting the velocity
-        rb2d.velocity = transform.up * bulletSpeed;
+        
     }
 }
