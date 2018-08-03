@@ -5,14 +5,20 @@ using UnityEngine;
 public class Large_Meteor : MonoBehaviour
 {
 
-    PolygonCollider2D pc2d;
-    Animator death_animation;
+    private PolygonCollider2D pc2d;
+    private Animator death_animation;
+    private SpriteRenderer spr;
+
+    public Sprite damageSprite;
+
+    public int health;
 
     // Use this for initialization
     void Start()
     {
         pc2d = GetComponent<PolygonCollider2D>();
         death_animation = GetComponent<Animator>();
+        spr = GetComponent<SpriteRenderer>();
 
     }
 
@@ -29,12 +35,21 @@ public class Large_Meteor : MonoBehaviour
         {
             // remove the bullet
             Destroy(other.gameObject);
-            // disable the collider and then play the small_meteor die animation
-            pc2d.enabled = false;
-            // play the death animation
-            death_animation.SetBool("Alive", false);
-            // remove enemy from game
-            StartCoroutine(destroy_meteor());
+            health--;
+            if (health > 0)
+            {
+                spr.sprite = damageSprite;
+            }
+            else
+            {
+                death_animation.enabled = true;
+                // disable the collider and then play the small_meteor die animation
+                pc2d.enabled = false;
+                // play the death animation
+                death_animation.SetBool("Alive", false);
+                // remove enemy from game
+                StartCoroutine(destroy_meteor());
+            }
         }
 
         if (other.gameObject.CompareTag("Player"))
