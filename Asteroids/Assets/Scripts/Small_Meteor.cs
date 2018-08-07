@@ -7,11 +7,14 @@ public class Small_Meteor : MonoBehaviour {
     PolygonCollider2D pc2d;
     Animator death_animation;
 
-	// Use this for initialization
-	void Start () {
+    private Rigidbody2D rb2d;
+
+    void Awake()
+    {
         pc2d = GetComponent<PolygonCollider2D>();
         death_animation = GetComponent<Animator>();
-
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
+        rb2d.velocity = transform.up * 5;
     }
 	
 	// Update is called once per frame

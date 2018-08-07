@@ -8,17 +8,20 @@ public class Large_Meteor : MonoBehaviour
     private PolygonCollider2D pc2d;
     private Animator death_animation;
     private SpriteRenderer spr;
+    private Rigidbody2D rb2d;
 
     public Sprite damageSprite;
 
     public int health;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         pc2d = GetComponent<PolygonCollider2D>();
         death_animation = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
+        rb2d.velocity = transform.up * 5;
 
     }
 

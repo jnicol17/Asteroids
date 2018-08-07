@@ -8,6 +8,8 @@ public class FireBullet : MonoBehaviour {
     // The bullet that we are firing
     public GameObject bullet;
 
+    public float fire_delay;
+
     // trigger_reset used to limit blaster to firing once per second
     private bool trigger_reset = true;
 	
@@ -33,7 +35,7 @@ public class FireBullet : MonoBehaviour {
     // wait for 1 second and then reset the trigger so that player can fire again
     IEnumerator reset_trigger()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(fire_delay);
         trigger_reset = true;
     }
 }
