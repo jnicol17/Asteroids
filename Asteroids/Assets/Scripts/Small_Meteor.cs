@@ -11,7 +11,9 @@ public class Small_Meteor : MonoBehaviour {
 
     void Awake()
     {
+        
         pc2d = GetComponent<PolygonCollider2D>();
+        StartCoroutine(enable_collider());
         death_animation = GetComponent<Animator>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         rb2d.velocity = transform.up * 5;
@@ -49,4 +51,9 @@ public class Small_Meteor : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
+    IEnumerator enable_collider()
+    {
+        yield return new WaitForSeconds(0.1f);
+        pc2d.enabled = true;
+    }
 }

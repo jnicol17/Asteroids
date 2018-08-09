@@ -15,8 +15,6 @@ public class Large_Meteor : MonoBehaviour
 
     public int health;
 
-    private IEnumerator coroutine;
-
     // Use this for initialization
     void Awake()
     {
@@ -40,6 +38,8 @@ public class Large_Meteor : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             // remove the bullet
+            float bullet_angle = other.transform.rotation.eulerAngles.z;
+            Debug.Log(other.transform.rotation.eulerAngles.z);
             Destroy(other.gameObject);
             health--;
             if (health > 0)
@@ -54,8 +54,7 @@ public class Large_Meteor : MonoBehaviour
                 // play the death animation
                 death_animation.SetBool("Alive", false);
                 // spawn two smaller meteors
-                coroutine = Spawn(30);
-                StartCoroutine(coroutine);
+                spawn(bullet_angle);
                 // remove enemy from game
                 StartCoroutine(destroy_meteor());
             }
@@ -73,21 +72,13 @@ public class Large_Meteor : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    IEnumerator Spawn(int angle)
+    public void spawn(float angle)
     {
-        Quaternion meteor1_rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Quaternion meteor1_rotation = Quaternion.AngleAxis(angle + 210, Vector3.forward);
         Instantiate(small_meteor, transform.position, meteor1_rotation);
-        yield return new WaitForSecondsRealtime(0.2f);
-        Debug.Log("HI");
-        Quaternion meteor2_rotation = Quaternion.AngleAxis(360 - angle, Vector3.forward);
+
+        Quaternion meteor2_rotation = Quaternion.AngleAxis(angle + 150, Vector3.forward);
         Instantiate(small_meteor, transform.position, meteor2_rotation);
     }
-
-    //public void spawn(int angle)
-    //{
-    //    // spawn an enemy at a random rotation
-    //    Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    //    Instantiate(small_meteor, transform.position, rotation);
-    //}
 
 }
