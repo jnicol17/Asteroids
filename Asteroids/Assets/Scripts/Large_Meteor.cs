@@ -22,7 +22,7 @@ public class Large_Meteor : MonoBehaviour
         death_animation = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        //rb2d.velocity = transform.up * 5;
+        rb2d.velocity = transform.up * 1;
 
     }
 
@@ -38,8 +38,6 @@ public class Large_Meteor : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             // remove the bullet
-            float bullet_angle = other.transform.rotation.eulerAngles.z;
-            Debug.Log(other.transform.rotation.eulerAngles.z);
             Destroy(other.gameObject);
             health--;
             if (health > 0)
@@ -54,7 +52,7 @@ public class Large_Meteor : MonoBehaviour
                 // play the death animation
                 death_animation.SetBool("Alive", false);
                 // spawn two smaller meteors
-                spawn(bullet_angle);
+                spawn(transform.up.z);
                 // remove enemy from game
                 StartCoroutine(destroy_meteor());
             }
@@ -74,10 +72,10 @@ public class Large_Meteor : MonoBehaviour
 
     public void spawn(float angle)
     {
-        Quaternion meteor1_rotation = Quaternion.AngleAxis(angle + 210, Vector3.forward);
+        Quaternion meteor1_rotation = Quaternion.AngleAxis(angle + 30, Vector3.forward);
         Instantiate(small_meteor, transform.position, meteor1_rotation);
 
-        Quaternion meteor2_rotation = Quaternion.AngleAxis(angle + 150, Vector3.forward);
+        Quaternion meteor2_rotation = Quaternion.AngleAxis(angle + 330, Vector3.forward);
         Instantiate(small_meteor, transform.position, meteor2_rotation);
     }
 
