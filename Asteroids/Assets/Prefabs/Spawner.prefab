@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114720098078262402}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,3 +54,5 @@ MonoBehaviour:
   enemies:
   - {fileID: 1099354162498846, guid: 519f1154269bdbd4ea6361015b5fbb99, type: 2}
   - {fileID: 1190863477128146, guid: 8cf600aa9e47b5a4ab2be101b2f819df, type: 2}
+  lower_limit: 270
+  upper_limit: 330
