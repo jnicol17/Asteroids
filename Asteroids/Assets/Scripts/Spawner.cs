@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Spawn();
+        //Spawn();
 	}
 	
 	// Update is called once per frame
@@ -21,7 +21,9 @@ public class Spawner : MonoBehaviour {
     public void Spawn()
     {
         // spawn an enemy at a random rotation
-        Quaternion rotation = Quaternion.AngleAxis(Random.Range(lower_limit, upper_limit), Vector3.forward);
+        int angle = Random.Range(lower_limit, upper_limit);
+        Debug.Log(angle);
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         Instantiate(enemies[0], transform.position, rotation);
     }
 }

@@ -11,7 +11,14 @@ public class Player : MonoBehaviour
     // moveSpeed controls how fast the player moves towards the mouse
     public float moveSpeed;
 
+    private Rigidbody2D rb2d;
+
     //public static Player instance;
+
+    private void Start()
+    {
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
+    }
 
     //// this function ensures that there is only ever one game controller
     //void Awake()
@@ -48,5 +55,10 @@ public class Player : MonoBehaviour
         targetPos.z = transform.position.z;
         // move the player towards the mouse at moveSpeed
         transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+
+
+        // we want the player to keep moving in the current direction even if the mouse stops moving so we need to check targetPos and current position
+        Debug.Log("Transform Position: " + transform.position);
+        Debug.Log("Mouse Position: " + targetPos);
     }
 }
