@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
 
         // we want the player to keep moving in the current direction even if the mouse stops moving so we need to check targetPos and current position
-        Debug.Log("Transform Position: " + transform.position);
-        Debug.Log("Mouse Position: " + targetPos);
+        //Debug.Log("Transform Position: " + transform.position);
+        //Debug.Log("Mouse Position: " + targetPos);
     }
 }
