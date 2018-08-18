@@ -46,9 +46,6 @@ public class Player : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
 
-
-        // Controls player movement towards the mouse
-
         // set the target position (the location of the mouse)
         Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         // z value is constant
