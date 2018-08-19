@@ -22,7 +22,7 @@ public class Large_Meteor : MonoBehaviour
         death_animation = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        rb2d.velocity = transform.up * 1;
+        rb2d.velocity = transform.up * 3;
 
     }
 
@@ -52,7 +52,9 @@ public class Large_Meteor : MonoBehaviour
                 // play the death animation
                 death_animation.SetBool("Alive", false);
                 // spawn two smaller meteors
-                spawn(transform.up.z);
+                float angle = transform.eulerAngles.z;
+                //spawn(transform.up.z);
+                spawn(angle);
                 // remove enemy from game
                 StartCoroutine(destroy_meteor());
             }

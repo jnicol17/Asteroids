@@ -11,13 +11,13 @@ public class Player : MonoBehaviour
     // moveSpeed controls how fast the player moves towards the mouse
     public float moveSpeed;
 
-    private Rigidbody2D rb2d;
+    //private Rigidbody2D rb2d;
 
     //public static Player instance;
 
     private void Start()
     {
-        rb2d = gameObject.GetComponent<Rigidbody2D>();
+        //rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
     //// this function ensures that there is only ever one game controller
