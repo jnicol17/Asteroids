@@ -9,13 +9,15 @@ public class Small_Meteor : MonoBehaviour {
 
     private Rigidbody2D rb2d;
 
+    public int speed = 4;
+
     void Awake()
     {
         
         pc2d = GetComponent<PolygonCollider2D>();
         death_animation = GetComponent<Animator>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        rb2d.velocity = transform.up * 5;
+        rb2d.velocity = transform.up * speed;
     }
 	
 	// Update is called once per frame

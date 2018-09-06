@@ -15,6 +15,8 @@ public class Large_Meteor : MonoBehaviour
 
     public int health;
 
+    public int speed = 3;
+
     // Use this for initialization
     void Awake()
     {
@@ -22,7 +24,7 @@ public class Large_Meteor : MonoBehaviour
         death_animation = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
-        rb2d.velocity = transform.up * 3;
+        rb2d.velocity = transform.up * speed;
 
     }
 

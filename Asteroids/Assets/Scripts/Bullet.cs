@@ -15,10 +15,17 @@ public class Bullet : MonoBehaviour {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         rb2d.velocity = transform.up * bulletSpeed;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        // constant bullet speed is attained by setting the velocity
-        
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // if a bullet hits the meteor, destroy the meteor and the bullet
+        if (other.gameObject.CompareTag("Meteor"))
+        {
+            FireBullet.instance.decrease_bullets();
+        }
+        else if (other.gameObject.CompareTag("Barrier"))
+        {
+            FireBullet.instance.decrease_bullets();
+        }
     }
 }
