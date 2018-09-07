@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class GameController : MonoBehaviour {
     public Spawner[] south_side_spawners;
 
     public static GameController instance;
+
+    private bool gameOver = false;
 
     void Awake()
     {
@@ -35,6 +38,17 @@ public class GameController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+    }
+
+    private void FixedUpdate()
+    {
+        if (gameOver)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
     }
 
     int getRandomNum(int min, int max)
@@ -64,5 +78,10 @@ public class GameController : MonoBehaviour {
         spawn('e', getRandomNum(0, east_side_spawners.Length));
         spawn('w', getRandomNum(0, west_side_spawners.Length));
         StartCoroutine(spawn_routine());
+    }
+
+    public void playerDied()
+    {
+        gameOver = true;
     }
 }

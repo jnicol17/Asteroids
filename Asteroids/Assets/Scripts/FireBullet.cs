@@ -41,7 +41,6 @@ public class FireBullet : MonoBehaviour {
             // Coroutine will yield for 1 second before resetting trigger_reset
             StartCoroutine(reset_trigger());
         }
-        Debug.Log(curr_bullets);
     }
 
     // Creates a new bullet prefab and fires it in the direction that the player is facing

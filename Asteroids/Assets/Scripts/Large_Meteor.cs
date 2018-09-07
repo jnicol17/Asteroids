@@ -65,6 +65,7 @@ public class Large_Meteor : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(other.gameObject);
+            GameController.instance.playerDied();
         }
     }
 
