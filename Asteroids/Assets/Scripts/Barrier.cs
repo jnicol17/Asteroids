@@ -16,6 +16,10 @@ public class Barrier : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            GameController.instance.playerDied();
+        }
             Destroy(other.gameObject);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour {
 
@@ -15,6 +16,17 @@ public class GameController : MonoBehaviour {
     private bool gameOver = false;
 
     public GameObject gameOverText;
+    public GameObject newHighscoreText;
+
+    // player score
+    private int score = 0;
+
+    // persistant data will be stored in gd
+    GameDetails gd;
+
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI highscoreText;
+    
 
     void Awake()
     {
@@ -30,10 +42,24 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //foreach (Spawner spawner in east_side_spawners)
-        //{
-        //    spawner.Spawn();
-        //}
+
+        // load the saved browser data
+        GameDetailContainer.LoadedGameDetails = DataAccess.Load();
+
+        // if there is browser data, store it in gd
+        // otherwise, create new browser data and store it in gd
+        if (GameDetailContainer.LoadedGameDetails != null)
+        {
+            gd = GameDetailContainer.LoadedGameDetails;
+        }
+        else
+        {
+            gd = new GameDetails();
+        }
+
+        scoreText.text = "Score: " + score.ToString();
+        highscoreText.text = "Highscore: " + gd.highscore.ToString();
+
         StartCoroutine(spawn_routine());
     }
 
@@ -49,6 +75,16 @@ public class GameController : MonoBehaviour {
         {
             // set the game over text, which tells the player how to restart, active
             gameOverText.SetActive(true);
+
+            if (score > gd.highscore)
+            {
+                gd.highscore = score;
+                newHighscoreText.SetActive(true);
+            }
+            
+            // save the updated gameDetails
+            DataAccess.Save(gd);
+
             // if the player left clicks, reload the scene
             if (Input.GetMouseButton(0))
             {
@@ -89,5 +125,17 @@ public class GameController : MonoBehaviour {
     public void playerDied()
     {
         gameOver = true;
+    }
+
+    public void playerScored(int scoreAmount)
+    {
+        score += scoreAmount;
+        scoreText.text = "Score: " + score.ToString();
+        if (score > gd.highscore)
+        {
+            highscoreText.text = "Highscore: " + score.ToString();
+        }
+        //Debug.Log(score);
+        //Debug.Log("Saved High Score: " + gd.highscore);
     }
 }

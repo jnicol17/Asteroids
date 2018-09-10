@@ -17,6 +17,8 @@ public class Large_Meteor : MonoBehaviour
 
     public int speed = 3;
 
+    public int score = 25;
+
     // Use this for initialization
     void Awake()
     {
@@ -48,6 +50,8 @@ public class Large_Meteor : MonoBehaviour
             }
             else
             {
+                // add score to the total score
+                GameController.instance.playerScored(score);
                 death_animation.enabled = true;
                 // disable the collider and then play the small_meteor die animation
                 pc2d.enabled = false;

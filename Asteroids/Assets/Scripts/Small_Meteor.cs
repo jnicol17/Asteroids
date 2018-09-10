@@ -11,6 +11,8 @@ public class Small_Meteor : MonoBehaviour {
 
     public int speed = 4;
 
+    public int score = 5;
+
     void Awake()
     {
         
@@ -32,6 +34,8 @@ public class Small_Meteor : MonoBehaviour {
         {
             // remove the bullet
             Destroy(other.gameObject);
+            // add score to the total score
+            GameController.instance.playerScored(score);
             // disable the collider and then play the small_meteor die animation
             pc2d.enabled = false;
             // play the death animation
