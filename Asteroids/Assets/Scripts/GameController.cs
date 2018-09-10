@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour {
 
     private bool gameOver = false;
 
+    public GameObject gameOverText;
+
     void Awake()
     {
         if (instance == null)
@@ -42,8 +44,12 @@ public class GameController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        // if the player has died
         if (gameOver)
         {
+            // set the game over text, which tells the player how to restart, active
+            gameOverText.SetActive(true);
+            // if the player left clicks, reload the scene
             if (Input.GetMouseButton(0))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
