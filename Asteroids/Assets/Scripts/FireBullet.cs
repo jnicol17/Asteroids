@@ -46,6 +46,7 @@ public class FireBullet : MonoBehaviour {
     // Creates a new bullet prefab and fires it in the direction that the player is facing
     void fire_bullet()
     {
+        FindObjectOfType<AudioManager>().Play("FireBullet");
         Instantiate(bullet, transform.position, transform.rotation);
         trigger_reset = false;
         curr_bullets++;

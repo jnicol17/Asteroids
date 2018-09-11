@@ -304,7 +304,7 @@ RectTransform:
   - {fileID: 1399331085}
   - {fileID: 1252104580}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1359,7 +1359,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4735522846570810, guid: 369388c3f68530f4e9faf602b6124314, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1058003664752064, guid: 369388c3f68530f4e9faf602b6124314, type: 2}
       propertyPath: m_Name
@@ -1566,6 +1566,67 @@ Transform:
   m_PrefabParentObject: {fileID: 4282276479855038, guid: f4ecf6179a5e9fd4a90f0b0c24e36b8c,
     type: 2}
   m_PrefabInternal: {fileID: 698102272}
+--- !u!1 &765796597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 765796599}
+  - component: {fileID: 765796598}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &765796598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 765796597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b494a02752ceb504eb8cdd3d217d39a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: PlayerDie
+    clip: {fileID: 8300000, guid: acabbd115e417484dbcf4516363fc8cc, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: FireBullet
+    clip: {fileID: 8300000, guid: 7f1a95aab0021c24b9923abd1d0a643d, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: SmallMeteorDie
+    clip: {fileID: 8300000, guid: 2c32682fc9064f048b65bc4512a7b096, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: LargeMeteorDamage
+    clip: {fileID: 8300000, guid: b4868107f1fcc264b990e3d32805d908, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: LargeMeteorDie
+    clip: {fileID: 8300000, guid: 2c32682fc9064f048b65bc4512a7b096, type: 3}
+    volume: 1
+    source: {fileID: 0}
+--- !u!4 &765796599
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 765796597}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &793766699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,7 +1763,7 @@ Transform:
   - {fileID: 1270991662}
   - {fileID: 1116421694}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &859161591
 Prefab:
@@ -3614,7 +3675,7 @@ Transform:
   - {fileID: 650912455}
   - {fileID: 1212214968}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1479140960
 Prefab:
@@ -3732,7 +3793,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1504305821
 Prefab:

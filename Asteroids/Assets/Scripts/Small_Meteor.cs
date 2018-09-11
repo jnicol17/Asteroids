@@ -32,6 +32,7 @@ public class Small_Meteor : MonoBehaviour {
         // if a bullet hits the meteor, destroy the meteor and the bullet
         if (other.gameObject.CompareTag("Bullet"))
         {
+            FindObjectOfType<AudioManager>().Play("SmallMeteorDie");
             // remove the bullet
             Destroy(other.gameObject);
             // add score to the total score
@@ -46,6 +47,7 @@ public class Small_Meteor : MonoBehaviour {
 
         if (other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("PlayerDie");
             Destroy(other.gameObject);
             GameController.instance.playerDied();
         }

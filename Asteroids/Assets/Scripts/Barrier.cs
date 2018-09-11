@@ -18,6 +18,7 @@ public class Barrier : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("PlayerDie");
             GameController.instance.playerDied();
         }
             Destroy(other.gameObject);

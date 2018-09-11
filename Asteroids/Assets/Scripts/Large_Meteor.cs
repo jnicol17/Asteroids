@@ -47,10 +47,12 @@ public class Large_Meteor : MonoBehaviour
             if (health > 0)
             {
                 spr.sprite = damageSprite;
+                FindObjectOfType<AudioManager>().Play("LargeMeteorDamage");
             }
             else
             {
                 // add score to the total score
+                FindObjectOfType<AudioManager>().Play("LargeMeteorDie");
                 GameController.instance.playerScored(score);
                 death_animation.enabled = true;
                 // disable the collider and then play the small_meteor die animation
@@ -68,6 +70,7 @@ public class Large_Meteor : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("PlayerDie");
             Destroy(other.gameObject);
             GameController.instance.playerDied();
         }
