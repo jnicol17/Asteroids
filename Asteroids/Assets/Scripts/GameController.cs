@@ -70,6 +70,15 @@ public class GameController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        // if the player presses m, mute all game sounds
+        if (Input.GetKeyDown("m"))
+        {
+            // save the change
+            gd.volumeOn = !gd.volumeOn;
+            DataAccess.Save(gd);
+            // mute
+            AudioManager.instance.muteVolume(gd);
+        }
         // if the player has died
         if (gameOver)
         {
