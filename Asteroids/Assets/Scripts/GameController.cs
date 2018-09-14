@@ -107,6 +107,7 @@ public class GameController : MonoBehaviour {
         return Random.Range(min, max);
     }
 
+    // Activate a spawner based on the direction (nsew)
     void spawn(char nsew, int index)
     {
         if (nsew == 'n')
@@ -121,6 +122,7 @@ public class GameController : MonoBehaviour {
             Debug.Log("SPAWN ERROR");
     }
 
+    // Coroutine runs every second, spawns 4 meteors from random spawners in each direction
     IEnumerator spawn_routine()
     {
         yield return new WaitForSeconds(1f);
@@ -131,15 +133,18 @@ public class GameController : MonoBehaviour {
         StartCoroutine(spawn_routine());
     }
 
+    // player has collided with meteor/barrier, end the game in fixedUpdate
     public void playerDied()
     {
         gameOver = true;
     }
 
+    // every time bullet hits a meteor, increment score
     public void playerScored(int scoreAmount)
     {
         score += scoreAmount;
         scoreText.text = "Score: " + score.ToString();
+        // if current score is higher than highscore, increment highscore
         if (score > gd.highscore)
         {
             highscoreText.text = "Highscore: " + score.ToString();

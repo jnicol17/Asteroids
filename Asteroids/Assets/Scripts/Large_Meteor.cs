@@ -76,12 +76,14 @@ public class Large_Meteor : MonoBehaviour
         }
     }
 
+    // wait 0.3 seconds to play the death animation
     IEnumerator destroy_meteor()
     {
         yield return new WaitForSeconds(0.3f);
         Destroy(this.gameObject);
     }
 
+    // spawn 2 small meteors based on the current direction of the large meteor
     public void spawn(float angle)
     {
         Quaternion meteor1_rotation = Quaternion.AngleAxis(angle + 30, Vector3.forward);
