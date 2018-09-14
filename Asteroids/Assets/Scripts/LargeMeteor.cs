@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Large_Meteor : MonoBehaviour
+public class LargeMeteor : MonoBehaviour
 {
 
     private PolygonCollider2D pc2d;
-    private Animator death_animation;
+    private Animator deathAnimation;
     private SpriteRenderer spr;
     private Rigidbody2D rb2d;
 
     public Sprite damageSprite;
-    public GameObject small_meteor;
+    public GameObject smallMeteor;
 
     public int health;
 
@@ -23,7 +23,7 @@ public class Large_Meteor : MonoBehaviour
     void Awake()
     {
         pc2d = GetComponent<PolygonCollider2D>();
-        death_animation = GetComponent<Animator>();
+        deathAnimation = GetComponent<Animator>();
         spr = GetComponent<SpriteRenderer>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         rb2d.velocity = transform.up * speed;
@@ -54,17 +54,17 @@ public class Large_Meteor : MonoBehaviour
                 // add score to the total score
                 FindObjectOfType<AudioManager>().Play("LargeMeteorDie");
                 GameController.instance.playerScored(score);
-                death_animation.enabled = true;
-                // disable the collider and then play the small_meteor die animation
+                deathAnimation.enabled = true;
+                // disable the collider and then play the smallMeteor die animation
                 pc2d.enabled = false;
                 // play the death animation
-                death_animation.SetBool("Alive", false);
+                deathAnimation.SetBool("Alive", false);
                 // spawn two smaller meteors
                 float angle = transform.eulerAngles.z;
                 //spawn(transform.up.z);
                 spawn(angle);
                 // remove enemy from game
-                StartCoroutine(destroy_meteor());
+                StartCoroutine(destroyMeteor());
             }
         }
 
@@ -77,7 +77,7 @@ public class Large_Meteor : MonoBehaviour
     }
 
     // wait 0.3 seconds to play the death animation
-    IEnumerator destroy_meteor()
+    IEnumerator destroyMeteor()
     {
         yield return new WaitForSeconds(0.3f);
         Destroy(this.gameObject);
@@ -86,11 +86,11 @@ public class Large_Meteor : MonoBehaviour
     // spawn 2 small meteors based on the current direction of the large meteor
     public void spawn(float angle)
     {
-        Quaternion meteor1_rotation = Quaternion.AngleAxis(angle + 30, Vector3.forward);
-        Instantiate(small_meteor, transform.position, meteor1_rotation);
+        Quaternion meteor1Rotation = Quaternion.AngleAxis(angle + 30, Vector3.forward);
+        Instantiate(smallMeteor, transform.position, meteor1Rotation);
 
-        Quaternion meteor2_rotation = Quaternion.AngleAxis(angle + 330, Vector3.forward);
-        Instantiate(small_meteor, transform.position, meteor2_rotation);
+        Quaternion meteor2Rotation = Quaternion.AngleAxis(angle + 330, Vector3.forward);
+        Instantiate(smallMeteor, transform.position, meteor2Rotation);
     }
 
 }

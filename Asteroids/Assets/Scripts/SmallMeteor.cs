@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Small_Meteor : MonoBehaviour {
+public class SmallMeteor : MonoBehaviour {
 
     PolygonCollider2D pc2d;
-    Animator death_animation;
+    Animator deathAnimation;
 
     private Rigidbody2D rb2d;
 
@@ -17,7 +17,7 @@ public class Small_Meteor : MonoBehaviour {
     {
         
         pc2d = GetComponent<PolygonCollider2D>();
-        death_animation = GetComponent<Animator>();
+        deathAnimation = GetComponent<Animator>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         rb2d.velocity = transform.up * speed;
     }
@@ -37,12 +37,12 @@ public class Small_Meteor : MonoBehaviour {
             Destroy(other.gameObject);
             // add score to the total score
             GameController.instance.playerScored(score);
-            // disable the collider and then play the small_meteor die animation
+            // disable the collider and then play the smallMeteor die animation
             pc2d.enabled = false;
             // play the death animation
-            death_animation.SetBool("Alive", false);
+            deathAnimation.SetBool("Alive", false);
             // remove enemy from game
-            StartCoroutine(destroy_meteor());
+            StartCoroutine(destroyMeteor());
         }
 
         if (other.gameObject.CompareTag("Player"))
@@ -53,7 +53,7 @@ public class Small_Meteor : MonoBehaviour {
         }
     }
 
-    IEnumerator destroy_meteor()
+    IEnumerator destroyMeteor()
     {
         yield return new WaitForSeconds(0.3f);
         Destroy(this.gameObject);
