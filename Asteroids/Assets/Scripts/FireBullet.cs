@@ -8,14 +8,14 @@ public class FireBullet : MonoBehaviour {
     // The bullet that we are firing
     public GameObject bullet;
 
-    public float fire_delay;
+    public float fireDelay;
 
-    public int max_bullets = 5;
+    public int maxBullets = 5;
 
-    private int curr_bullets = 0;
+    private int currBullets = 0;
 
-    // trigger_reset used to limit blaster to firing once per second
-    private bool trigger_reset = true;
+    // triggerReset used to limit blaster to firing once per second
+    private bool triggerReset = true;
 
     public static FireBullet instance;
 
@@ -34,33 +34,33 @@ public class FireBullet : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         // The player can hold the mouse button down or just click it once
-        // trigger_reset allows at most 1 bullet per second
-        if (Input.GetMouseButton(0) && trigger_reset && curr_bullets < max_bullets)
+        // triggerReset allows at most 1 bullet per second
+        if (Input.GetMouseButton(0) && triggerReset && currBullets < maxBullets)
         {
-            fire_bullet();
-            // Coroutine will yield for 1 second before resetting trigger_reset
-            StartCoroutine(reset_trigger());
+            fireBullet();
+            // Coroutine will yield for 1 second before resetting triggerReset
+            StartCoroutine(resetTrigger());
         }
     }
 
     // Creates a new bullet prefab and fires it in the direction that the player is facing
-    void fire_bullet()
+    void fireBullet()
     {
         FindObjectOfType<AudioManager>().Play("FireBullet");
         Instantiate(bullet, transform.position, transform.rotation);
-        trigger_reset = false;
-        curr_bullets++;
+        triggerReset = false;
+        currBullets++;
     }
 
-    public void decrease_bullets()
+    public void decreaseBullets()
     {
-        curr_bullets--;
+        currBullets--;
     }
 
     // wait for 1 second and then reset the trigger so that player can fire again
-    IEnumerator reset_trigger()
+    IEnumerator resetTrigger()
     {
-        yield return new WaitForSeconds(fire_delay);
-        trigger_reset = true;
+        yield return new WaitForSeconds(fireDelay);
+        triggerReset = true;
     }
 }

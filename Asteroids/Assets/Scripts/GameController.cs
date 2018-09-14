@@ -6,10 +6,10 @@ using TMPro;
 
 public class GameController : MonoBehaviour {
 
-    public Spawner[] east_side_spawners;
-    public Spawner[] west_side_spawners;
-    public Spawner[] north_side_spawners;
-    public Spawner[] south_side_spawners;
+    public Spawner[] eastSideSpawners;
+    public Spawner[] westSideSpawners;
+    public Spawner[] northSideSpawners;
+    public Spawner[] southSideSpawners;
 
     public static GameController instance;
 
@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour {
         scoreText.text = "Score: " + score.ToString();
         highscoreText.text = "Highscore: " + gd.highscore.ToString();
 
-        StartCoroutine(spawn_routine());
+        StartCoroutine(spawnRoutine());
     }
 
     // Update is called once per frame
@@ -111,26 +111,26 @@ public class GameController : MonoBehaviour {
     void spawn(char nsew, int index)
     {
         if (nsew == 'n')
-            north_side_spawners[index].Spawn();
+            northSideSpawners[index].Spawn();
         else if (nsew == 's')
-            south_side_spawners[index].Spawn();
+            southSideSpawners[index].Spawn();
         else if (nsew == 'e')
-            east_side_spawners[index].Spawn();
+            eastSideSpawners[index].Spawn();
         else if (nsew == 'w')
-            west_side_spawners[index].Spawn();
+            westSideSpawners[index].Spawn();
         else
             Debug.Log("SPAWN ERROR");
     }
 
     // Coroutine runs every second, spawns 4 meteors from random spawners in each direction
-    IEnumerator spawn_routine()
+    IEnumerator spawnRoutine()
     {
         yield return new WaitForSeconds(1f);
-        spawn('n', getRandomNum(0, north_side_spawners.Length));
-        spawn('s', getRandomNum(0, south_side_spawners.Length));
-        spawn('e', getRandomNum(0, east_side_spawners.Length));
-        spawn('w', getRandomNum(0, west_side_spawners.Length));
-        StartCoroutine(spawn_routine());
+        spawn('n', getRandomNum(0, northSideSpawners.Length));
+        spawn('s', getRandomNum(0, southSideSpawners.Length));
+        spawn('e', getRandomNum(0, eastSideSpawners.Length));
+        spawn('w', getRandomNum(0, westSideSpawners.Length));
+        StartCoroutine(spawnRoutine());
     }
 
     // player has collided with meteor/barrier, end the game in fixedUpdate

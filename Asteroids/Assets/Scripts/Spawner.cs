@@ -6,8 +6,8 @@ public class Spawner : MonoBehaviour {
 
     public GameObject[] enemies;
 
-    public int lower_limit;
-    public int upper_limit;
+    public int lowerLimit;
+    public int upperLimit;
 
     // Use this for initialization
     void Start () {
@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour {
     public void Spawn()
     {
         // spawn an enemy at a random rotation
-        int angle = Random.Range(lower_limit, upper_limit);
+        int angle = Random.Range(lowerLimit, upperLimit);
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         int enemyIndex = getEnemyToSpawn();
         Instantiate(enemies[enemyIndex], transform.position, rotation);

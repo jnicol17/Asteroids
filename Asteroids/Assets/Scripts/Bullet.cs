@@ -21,11 +21,11 @@ public class Bullet : MonoBehaviour {
         // if a bullet hits the meteor, destroy the meteor and the bullet
         if (other.gameObject.CompareTag("Meteor"))
         {
-            FireBullet.instance.decrease_bullets();
+            FireBullet.instance.decreaseBullets();
         }
         else if (other.gameObject.CompareTag("Barrier"))
         {
-            FireBullet.instance.decrease_bullets();
+            FireBullet.instance.decreaseBullets();
         }
     }
 }
