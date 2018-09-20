@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1842677285021986, guid: 94608a9cf068c4241a6971f1dfc43c83, type: 2}
-  fire_delay: 0.1
-  max_bullets: 5
+  fireDelay: 0.1
+  maxBullets: 5
 --- !u!114 &114949674562976198
 MonoBehaviour:
   m_ObjectHideFlags: 1
