@@ -137,9 +137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageSprite: {fileID: 21300000, guid: b3a4a36348042c7499e61a7f15e80fe0, type: 3}
-  small_meteor: {fileID: 1099354162498846, guid: 519f1154269bdbd4ea6361015b5fbb99,
+  smallMeteor: {fileID: 1099354162498846, guid: 519f1154269bdbd4ea6361015b5fbb99,
     type: 2}
   health: 2
+  speed: 3
+  score: 25
 --- !u!212 &212245913338564464
 SpriteRenderer:
   m_ObjectHideFlags: 1
